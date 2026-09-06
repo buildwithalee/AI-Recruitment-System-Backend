@@ -34,7 +34,6 @@ supabase: Client = create_client(SUPABASE_URL, SUPABASE_KEY)
 # ==============================
 # APP
 # ==============================
-
 app = FastAPI(
     title="Simple AI Recruitment Screening API",
     version="2.1.0",
@@ -47,11 +46,11 @@ app.add_middleware(
         "http://127.0.0.1:3000",
         "https://ai-recruitment-system-frontend.vercel.app",
     ],
+    allow_origin_regex=r"https://ai-recruitment-system-frontend(?:-[a-zA-Z0-9-]+)?\.vercel\.app",
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
-
 MAX_RESUME_SIZE = 10 * 1024 * 1024
 
 # ==============================
